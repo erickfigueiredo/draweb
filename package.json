@@ -1,0 +1,23 @@
+{
+  "name": "draweb",
+  "version": "1.0.0",
+  "description": "Compartilhamento de desenhos ao vivo",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erickfigueiredo/draweb.git"
+  },
+  "author": "Erick Figueiredo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/erickfigueiredo/draweb/issues"
+  },
+  "homepage": "https://github.com/erickfigueiredo/draweb#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^3.0.5"
+  }
+}

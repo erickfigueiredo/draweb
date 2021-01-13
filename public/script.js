@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', _=>{
 
+    const socket = io.connect();
+
     const pen = {
         active: false,
         moving: false,
@@ -43,12 +45,29 @@ document.addEventListener('DOMContentLoaded', _=>{
         pen.moving = true;
     }
 
+    socket.on('draw', (line) => {
+        drawLine(line);
+    });
+
+    document.body.addEventListener('keyup', e => {
+        if (e.keyCode === 32) {
+            window.location.reload();
+            socket.emit('clear');
+        }
+    });
+
     const cicle = _ => {
         if(pen.active && pen.moving && pen.posBefore) {
+
+            socket.emit('draw', {pos: pen.pos, posBefore: pen.posBefore});
+            
+            /*
             drawLine({
                 pos: pen.pos,
                 posBefore: pen.posBefore
             });
+            */
+            
             pen.moving = false;
         }
 
@@ -60,4 +79,6 @@ document.addEventListener('DOMContentLoaded', _=>{
     }
 
     cicle();
+
+
 });
